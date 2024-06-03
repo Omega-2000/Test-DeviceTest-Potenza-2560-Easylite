@@ -3,8 +3,6 @@
 
 #include <Arduino.h>
 
-//#include "QUARZO_.h"
-//#include "EEPROM_.h"
 #include "CANBUS_.h"
 #include "I2C_.h"
 #include "EMERGENZE_.h"

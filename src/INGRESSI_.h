@@ -30,19 +30,12 @@ extern bool man_pedale;
 #define MOT_NTC          58
 #define ALZO_NTC         56
 
-extern String inputString_i;      // = "";        // a String to hold incoming data
-extern bool stringComplete_i;     // = false;     // whether the string is complete
 extern uint32_t giri;
 
-void serialEvent_i();
-void next();    //  attesa del comand !NEXT dalla seriale per passare al test successivo
+void contagiri();   //  interrupt
+float get_temperature(uint8_t ntc);     //  per test ntc
 
 void BEGIN_ingressi();
-
-void contagiri();   //  interrupt
-
-float get_temperature(uint8_t ntc);
-
 void TEST_ingressi();
 
 

@@ -1,54 +1,6 @@
 #include "INGRESSI_.h"
 
-String inputString_i = "";
-bool stringComplete_i = false;
-//bool man_pedale;
 uint32_t giri = 0;
-
-void serialEvent_i() {
-  while (Serial.available())
-  {
-    char inChar = (char)Serial.read(); // get the new byte:
-    inputString_i += inChar;             // add it to the inputString:
-    if (inChar == '\n')
-    { // if the incoming character is a newline, set a flag so the main loop cando something about it:
-      stringComplete_i = true;
-    }
-  }
-}
-
-void next() {
-    bool next = 0;
-    while(!next) {
-        serialEvent_i();
-        if (stringComplete_i)
-        {
-            //  confronta_stringhe
-            stringComplete_i = false;
-            String confronto = String(inputString_i);
-            Serial.println(confronto);
-            Serial.println("");
-            if (confronto.indexOf("!NEXT") != -1) next = 1;
-            //
-
-            Serial.println("");
-            Serial.println("In attesa...");
-            return;
-        }
-
-        delay(10);
-    }
-}
-
-void BEGIN_ingressi() {
-    pinMode(PEDALE, INPUT);
-    pinMode(CONTA_GIRI, INPUT);
-    attachInterrupt(digitalPinToInterrupt(CONTA_GIRI), contagiri, CHANGE);  //  dato per scontato che il motorino del contagiri sia fermo finchè non dico io di farlo partire
-    pinMode(ALZO_FINE_CORSA, INPUT);
-    pinMode(TRIM_ALT_RULLI, INPUT);
-    pinMode(MOT_NTC, INPUT);
-    pinMode(ALZO_NTC, INPUT);
-}
 
 void contagiri() {
     giri++;
@@ -65,6 +17,16 @@ float get_temperature(uint8_t ntc) {
     T = (1.0 / (c1 + c2 * logR2 + c3 * logR2 * logR2 * logR2));
     T = T - 273.15;
     return T;
+}
+
+void BEGIN_ingressi() {
+    pinMode(PEDALE, INPUT);
+    pinMode(CONTA_GIRI, INPUT);
+    attachInterrupt(digitalPinToInterrupt(CONTA_GIRI), contagiri, CHANGE);  //  dato per scontato che il motorino del contagiri sia fermo finchè non dico io di farlo partire
+    pinMode(ALZO_FINE_CORSA, INPUT);
+    pinMode(TRIM_ALT_RULLI, INPUT);
+    pinMode(MOT_NTC, INPUT);
+    pinMode(ALZO_NTC, INPUT);
 }
 
 void TEST_ingressi() {

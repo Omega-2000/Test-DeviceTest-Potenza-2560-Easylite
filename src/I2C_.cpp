@@ -9,8 +9,8 @@ void TEST_i2c() {
   bool foundTarget_1 = false;
   bool foundTarget_2 = false;
 
-  const char* deviceNames[2] = { "EEPROM1" , "EEPROM2"};                           //     !!!!!!!   cambiare nomi devices
-  int targetDevices[2] = { 0x50 , 0x58};                                        //     !!!!!!!   cambiare indirizzi devices
+  const char* deviceNames[2] = { "EEPROM1" , "EEPROM2"};      //  se serve cambiare il numero di indirizzi da trovare, cambiare grandezza array e cambiare nomi devices
+  int targetDevices[2] = { 0x50 , 0x58};                      //  se serve cambiare il numero di indirizzi da trovare, cambiare grandezza array cambiare indirizzi devices     //  se serve cambiare indirizzi i2c da trovare, modificare gli indirizzi da questo array
 
   Serial.println("Scanning for I2C devices ...");
 
@@ -30,7 +30,7 @@ void TEST_i2c() {
       Serial.println("  !");
 
       // Check if the found address matches the target device address
-      if (address == targetDevices[0]) foundTarget_1 = true;
+      if (address == targetDevices[0]) foundTarget_1 = true;              //  se serve cambiare il numero di indirizzi da trovare, aggiungi o rimuovi variabili "foundTarget_x"
       if (address == targetDevices[1]) foundTarget_2 = true;
 
       nDevices++;
@@ -50,29 +50,8 @@ void TEST_i2c() {
     Serial.println("done\n");
   }
 
-  // Check if the target device (0x50) was not found
-  //if /*(*/(nDevices == 1)/* && (!foundTarget_1 || !foundTarget_2))*/ {
-  /*if (nDevices == 1) {
-
-    char errorMessage[256] = "";
-    strcpy(errorMessage, "Missing Devices:");
-
-    // Aggiungi il valore di targetDevices[0] al messaggio
-    char buffer[16];
-
-    if (!foundTarget_1) sprintf(buffer, "%d ERRORE i2c ---> ", targetDevices[0]); else if (!foundTarget_2) sprintf(buffer, "%d ERRORE i2c ---> ", targetDevices[1]);
-    
-    strcat(errorMessage, buffer);
-
-    // Aggiungi il valore di deviceNames[0] al messaggio
-    if (!foundTarget_1) strcat(errorMessage, deviceNames[0]); else if (!foundTarget_2) strcat(errorMessage, deviceNames[0]);
-    Serial.print("{ \"name\": \"!I2C\", \"result\": \"error\", \"error\": \"");
-    Serial.print(errorMessage);
-    Serial.print(" errorMessage\"}\n");
-  }*/
-
   //  If both I2C devices found
-  if ((nDevices == 2) && foundTarget_1 && foundTarget_2) {
+  if ((nDevices == 2) && foundTarget_1 && foundTarget_2) {                //  se serve cambiare il numero di indirizzi da trovare, aggiungi o rimuovi variabili "foundTarget_x" e cambia il numero da comparare con la variabile "nDevices"
     Serial.println("Test OK");
     Serial.println("{ \"name\": \"I2C\", \"result\": \"ok\"}");
   } else {
