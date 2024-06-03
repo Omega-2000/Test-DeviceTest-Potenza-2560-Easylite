@@ -51,6 +51,7 @@
   - BEGIN_ingressi() : funzione che inizializza tutti i gpio che si andranno a testare nel test degli ingressi
 
   - TEST_ingressi() : funzione che testa tutti gli ingressi utilizzati in macchina e ritorna il risultato del test, seguire le istruzioni per effettuare il test correttamente
+  - ***IL TEST NON E' PRECISO IN TUTTI GLI STEP CHE SI TESTANO E SAREBBE DA RIFARE E DIVIDERE I VARI STEP IN TEST SEPARATI***
 
 - USCITE_
   - serialEvent_u() : funzione che legge la seriale e all'invio di "\n" ritorna "true" che indicherà la lettura della seriale avvenuta e si potrà passare al controllo del comando ricevuto

@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map for library FLEXA_CAN_IDs
+#######################################
+
+#######################################
+# KEYWORD1 Classes, datatypes, and C++ keywords
+#######################################
+MotorDriver	KEYWORD1
+ 
+#######################################
+# KEYWORD2 Methods and functions
+#######################################
+begin		KEYWORD2
+start		KEYWORD2
+stop		KEYWORD2
+brake		KEYWORD2
+
+getCurrent	KEYWORD2
+getTemperature	KEYWORD2
+getEndstopHit	KEYWORD2
+getDirection	KEYWORD2
+getState	KEYWORD2
+
+
+
+#######################################
+# KEYWORD3 setup and loop functions, as well as the Serial keywords
+#######################################
+loop	KEYWORD3
+
+
+#######################################
+LITERAL1 Constants
+#######################################
