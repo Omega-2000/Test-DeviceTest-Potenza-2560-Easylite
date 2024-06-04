@@ -1,5 +1,17 @@
 # Test-DeviceTest-Potenza-2560-Easylite
 
+**LISTA TEST**
+- CANBUS
+- I2C
+- INGRESSI (test PEDALE, CONTAGIRI, FINECORSA_ALZO, TRIM_ALT_RULLI, NTC)
+- RELÈ
+- INV (uscita INV_0_10)
+- SSR (uscita SSR_3)
+- TRAZIONE
+- ALZO
+- FOTOCELLULE
+- FUNGHI
+
 **HARDWARE**
 - Scheda Potenza Easylite (montata in piattaforma di test con il resto delle schede del kit Easylite)
 - Microcontrollore ATMEGA2560
@@ -24,18 +36,6 @@
 
 **FUNZIONAMENTO IN SINTESI**
 - Il programma rimarrà in attesa finchè non gli sarà inviato un comando in seriale. Un numero corrisponderà a un test da avviare e se il comando non sarà riconosciuto, verrà inviata la lista dei comandi da poter inviare. Una volta avviato il test, in seriale verranno stampate alcune istruzioni su come effettuare i test, che verranno ulteriormente arricchite sull'interfaccia del devicetest. Alcuni di questi test sono composti da più step e solo una parte di questi richiederà l'invio di un comando per avanzare allo step successivo, oppure il programma potrebbe attendere il comando di fine test. Per inviare il comando "next" si potrà scrivere il numero "98" in seriale, mentre si potrà scrivere il numero "99" per completare il test. Gli altri test invece saranno automatici (test eseguiti dal programma che ritornerà direttamente il risultato), oppure semiautomatici che richiederanno delle interazioni dall'operatore prima di poter ritornare un risultato.
-
-**LISTA TEST**
-- CANBUS
-- I2C
-- INGRESSI (test PEDALE, CONTAGIRI, FINECORSA_ALZO, TRIM_ALT_RULLI, NTC)
-- RELE
-- INV (uscita INV_0_10)
-- SSR (uscita SSR_3)
-- TRAZIONE
-- ALZO
-- FOTOCELLULE
-- FUNGHI
 
 **FUNZIONAMENTO CODICE**
 - SERIAL_
